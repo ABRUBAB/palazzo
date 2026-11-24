@@ -1,0 +1,693 @@
+/* === DEEP TUSCAN CYPRESS 2-STAGE BUILDING & ROOM EXPLORER === */
+.explorer-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.85rem;
+}
+
+.explorer-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blueprint-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.95rem;
+  font-size: 0.8rem;
+  color: rgba(247, 243, 236, 0.86);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1.5px solid var(--brass-bright);
+  background: var(--surface-elevated);
+}
+
+.legend-swatch--selected {
+  background: var(--cypress-light);
+  border-color: var(--brass-bright);
+  box-shadow: 0 0 8px rgba(217, 184, 126, 0.5);
+}
+
+.legend-swatch--last {
+  background: var(--terracotta);
+  border-color: #FAF7F2;
+}
+
+.legend-swatch--reserved {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.25) 3px,
+    rgba(26, 23, 21, 0.4) 3px,
+    rgba(26, 23, 21, 0.4) 6px
+  );
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Main 2-Stage Workbench Layout */
+.explorer-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.explorer-workbench,
+.suite-showcase {
+  min-width: 0;
+}
+
+/* Left Workbench Container */
+.explorer-workbench {
+  background: rgba(250, 247, 242, 0.98);
+  color: var(--ink);
+  border: 1px solid rgba(217, 184, 126, 0.45);
+  border-radius: var(--radius-lg);
+  padding: clamp(0.85rem, 2.2vw, 1.5rem);
+  box-shadow: 0 32px 64px -20px rgba(0, 0, 0, 0.48);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Palazzo Cutaway Elevation + Full-Width Floor Switcher */
+.floor-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-bottom: 0.95rem;
+  border-bottom: 1px solid var(--divider);
+}
+
+.elevation-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--divider);
+}
+
+.elevation-svg {
+  width: 78px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.elevation-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+  min-width: 0;
+}
+
+.elevation-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--terracotta);
+}
+
+.floor-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.floor-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.16rem;
+  padding: 0.72rem 0.82rem;
+  border-radius: var(--radius-md);
+  text-align: left;
+  min-width: 0;
+}
+
+.floor-btn-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.floor-code {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+
+.floor-btn[aria-pressed='true'] .floor-code {
+  color: var(--brass-bright);
+}
+
+.floor-match-count {
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 0.1rem 0.44rem;
+  border-radius: var(--radius-pill);
+  background: rgba(158, 84, 61, 0.12);
+  color: var(--terracotta);
+  white-space: nowrap;
+}
+
+.floor-btn[aria-pressed='true'] .floor-match-count {
+  background: rgba(217, 184, 126, 0.25);
+  color: var(--canvas);
+}
+
+.floor-name {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.15;
+  max-width: 100%;
+}
+
+.floor-sub {
+  font-size: 0.72rem;
+  opacity: 0.76;
+  line-height: 1.25;
+}
+
+.floor-light-banner {
+  padding: 0.58rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--terracotta-tint);
+  border: 1px solid rgba(158, 84, 61, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+/* Interactive Architectural SVG Floorplan */
+.blueprint-viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(184, 147, 90, 0.08), transparent 72%),
+    #F3EEE4;
+  border: 1px solid var(--divider-strong);
+}
+
+.blueprint-layer {
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.blueprint-layer.is-entering-up {
+  animation: floorShiftUp 340ms var(--ease-architectural) both;
+}
+
+.blueprint-layer.is-entering-down {
+  animation: floorShiftDown 340ms var(--ease-architectural) both;
+}
+
+@keyframes floorShiftUp {
+  from {
+    opacity: 0.55;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floorShiftDown {
+  from {
+    opacity: 0.55;
+    transform: translateY(-14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.blueprint-svg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 760 / 500;
+  display: block;
+}
+
+.bp-room {
+  cursor: pointer;
+  transition: opacity 260ms var(--ease-architectural);
+}
+
+.bp-room-fill {
+  fill: #FAF7F2;
+  stroke: var(--brass);
+  stroke-width: 1.8;
+  transition:
+    fill 260ms var(--ease-architectural),
+    stroke 260ms var(--ease-architectural),
+    stroke-width 260ms var(--ease-architectural),
+    filter 260ms var(--ease-architectural);
+}
+
+.bp-room.is-available:hover .bp-room-fill,
+.bp-room.is-available:focus-visible .bp-room-fill {
+  fill: #F5EAD7;
+  stroke: var(--terracotta);
+  stroke-width: 2.6;
+  filter: drop-shadow(0 8px 16px rgba(26, 23, 21, 0.16));
+}
+
+.bp-room.is-selected .bp-room-fill {
+  fill: var(--cypress);
+  stroke: var(--brass-bright);
+  stroke-width: 3.2;
+  filter: drop-shadow(0 12px 22px rgba(20, 33, 27, 0.36));
+}
+
+.bp-room.is-reserved {
+  cursor: pointer;
+}
+
+.bp-room.is-reserved .bp-room-fill {
+  fill: url(#reserved-hatch);
+  stroke: rgba(26, 23, 21, 0.38);
+  stroke-width: 1.4;
+}
+
+.bp-room.is-dimmed {
+  opacity: 0.26;
+}
+
+.bp-room-text {
+  fill: var(--ink);
+  pointer-events: none;
+  transition: fill 200ms;
+}
+
+.bp-room-subtext {
+  fill: var(--umber);
+  pointer-events: none;
+  transition: fill 200ms;
+}
+
+.bp-room.is-selected .bp-room-text {
+  fill: #FAF7F2;
+}
+
+.bp-room.is-selected .bp-room-subtext {
+  fill: rgba(247, 243, 236, 0.85);
+}
+
+.bp-window-glow {
+  stroke: var(--terracotta);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  opacity: 0.45;
+  transition: opacity 260ms, stroke-width 260ms;
+}
+
+.bp-room:hover .bp-window-glow,
+.bp-room.is-selected .bp-window-glow {
+  opacity: 1;
+  stroke-width: 5.5;
+  stroke: var(--brass-bright);
+}
+
+.bp-pulse-dot {
+  animation: brassPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes brassPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.22);
+  }
+}
+
+/* Floating Blueprint Quick-Card */
+.bp-tooltip {
+  position: absolute;
+  z-index: 20;
+  min-width: 210px;
+  max-width: 255px;
+  padding: 0.78rem 0.92rem;
+  border-radius: var(--radius-md);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -8px) scale(0.97);
+  transition:
+    opacity 200ms var(--ease-architectural),
+    transform 200ms var(--ease-architectural);
+}
+
+.bp-tooltip.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.bp-tooltip.is-interactive {
+  pointer-events: auto;
+}
+
+.bp-tooltip-title {
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.bp-tooltip-meta {
+  margin-top: 0.25rem;
+  font-size: 0.76rem;
+  color: var(--umber);
+}
+
+.bp-tooltip-price {
+  margin-top: 0.42rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--cypress);
+}
+
+/* Interactive Floor Suites Visual Cards Strip (All Screen Sizes) */
+.floor-suites-heading {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--umber);
+}
+
+.floor-suites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.55rem;
+}
+
+.floor-suite-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--divider);
+  background: var(--canvas);
+  text-align: left;
+  min-width: 0;
+  transition:
+    border-color 200ms,
+    background-color 200ms,
+    transform 200ms var(--ease-architectural),
+    box-shadow 200ms;
+}
+
+.floor-suite-card:hover:not(:disabled) {
+  border-color: var(--brass);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -8px rgba(26, 23, 21, 0.16);
+}
+
+.floor-suite-card.is-selected {
+  background: var(--cypress);
+  color: var(--canvas);
+  border-color: var(--brass-bright);
+  box-shadow: 0 12px 24px -10px rgba(20, 33, 27, 0.5);
+}
+
+.floor-suite-card.is-reserved {
+  opacity: 0.65;
+  background: repeating-linear-gradient(
+    -45deg,
+    #EDE6DA,
+    #EDE6DA 6px,
+    #E4DDD0 6px,
+    #E4DDD0 12px
+  );
+}
+
+.floor-suite-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brass);
+  flex-shrink: 0;
+}
+
+.status-dot--last {
+  background: var(--terracotta);
+}
+
+.status-dot--booked {
+  background: var(--umber);
+}
+
+.floor-suite-card-name {
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.floor-suite-card-meta {
+  font-size: 0.74rem;
+  opacity: 0.8;
+}
+
+/* Right Stage: Luxury Suite Showcase Card */
+.suite-showcase {
+  background: var(--surface-elevated);
+  color: var(--ink);
+  border: 1px solid rgba(217, 184, 126, 0.48);
+  border-radius: var(--radius-lg);
+  padding: clamp(1rem, 2.2vw, 1.45rem);
+  box-shadow: 0 32px 64px -20px rgba(0, 0, 0, 0.48);
+  transition: transform 320ms var(--ease-architectural);
+  transform-style: preserve-3d;
+}
+
+.suite-media-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.suite-floating-tags {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.45rem;
+  pointer-events: none;
+}
+
+.suite-floor-chip {
+  padding: 0.32rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.suite-demand-chip {
+  padding: 0.32rem 0.72rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--terracotta);
+  color: var(--canvas);
+  box-shadow: 0 6px 14px rgba(158, 84, 61, 0.4);
+}
+
+.suite-header-row {
+  margin-top: 1.05rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.suite-category {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--terracotta);
+}
+
+.suite-name {
+  margin: 0.22rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.38rem, 1.2rem + 0.6vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--ink);
+}
+
+.suite-price-box {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.suite-price-num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--cypress);
+  line-height: 1;
+}
+
+.suite-price-unit {
+  font-size: 0.74rem;
+  color: var(--umber);
+}
+
+.suite-tagline {
+  margin: 0.55rem 0 0;
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.suite-desc {
+  margin: 0.45rem 0 0;
+  font-size: 0.86rem;
+  color: var(--umber);
+  line-height: 1.55;
+}
+
+.suite-specs {
+  margin-top: 0.9rem;
+  padding-block: 0.8rem;
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.spec-label {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--umber);
+}
+
+.spec-value {
+  margin-top: 0.14rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.suite-badges {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.suite-stay-preview {
+  margin-top: 0.95rem;
+  padding: 0.72rem 0.9rem;
+  border-radius: var(--radius-md);
+  background: var(--sage-mist);
+  border: 1px solid rgba(31, 48, 40, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--cypress-deep);
+}
+
+.suite-warning {
+  margin-top: 0.75rem;
+  padding: 0.58rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--terracotta-soft);
+  color: #6B311F;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.suite-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+@media (min-width: 720px) {
+  .floor-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  .explorer-stage {
+    grid-template-columns: minmax(0, 1.28fr) minmax(360px, 0.88fr);
+    gap: 1.5rem;
+  }
+  .suite-showcase {
+    position: sticky;
+    top: 5.35rem;
+  }
+}

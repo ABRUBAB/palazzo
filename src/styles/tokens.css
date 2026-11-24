@@ -1,0 +1,82 @@
+:root {
+  /* === FLORENTINE TRAVERTINE, CYPRESS, TERRACOTTA & BRASS PALETTE === */
+  --canvas: #F7F3EC;
+  --surface: #EDE6DA;
+  --surface-blush: #EFE7DC;
+  --surface-elevated: #FAF7F2;
+  --sage-mist: #DCE4DF;
+  --ink: #1A1715;
+  --ink-soft: #2A2521;
+
+  --cypress: #1F3028;
+  --cypress-deep: #14211B;
+  --cypress-light: #2A4136;
+
+  --brass: #B8935A;
+  --brass-bright: #D9B87E;
+  --brass-hover: #9E7B43;
+  --brass-accessible: #7D5D2B; /* >= 5.1:1 contrast on #F7F3EC */
+
+  --terracotta: #9E543D;
+  --terracotta-warm: #B86145;
+  --terracotta-tint: #F3E5DE;
+  --terracotta-soft: rgba(158, 84, 61, 0.14);
+
+  --umber: #575049;
+  --divider: rgba(26, 23, 21, 0.12);
+  --divider-strong: rgba(26, 23, 21, 0.22);
+
+  /* === GLASSMORPHISM & LIQUID SURFACES === */
+  --glass-bg: rgba(250, 247, 242, 0.84);
+  --glass-bg-strong: rgba(250, 247, 242, 0.94);
+  --glass-dark-bg: rgba(20, 22, 19, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-border-light: rgba(26, 23, 21, 0.1);
+  --glass-shadow:
+    0 20px 44px -16px rgba(26, 23, 21, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(26, 23, 21, 0.05);
+  --glass-dark-shadow:
+    0 24px 52px -12px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+
+  /* === TACTILE NEOMORPHISM (Controls Only) === */
+  --neu-bg: #F1ECE3;
+  --neu-shadow:
+    4px 4px 12px rgba(26, 23, 21, 0.09),
+    -4px -4px 12px rgba(255, 255, 255, 0.78);
+  --neu-shadow-inset:
+    inset 3px 3px 7px rgba(26, 23, 21, 0.11),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.85);
+
+  /* === TYPOGRAPHY === */
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+
+  /* === FLUID SCALE === */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.08rem;
+  --text-xl: clamp(1.2rem, 1.08rem + 0.45vw, 1.45rem);
+  --text-2xl: clamp(1.55rem, 1.3rem + 1.1vw, 2.2rem);
+  --text-3xl: clamp(1.95rem, 1.5rem + 1.8vw, 2.95rem);
+  --text-hero: clamp(2.5rem, 1.85rem + 3.4vw, 4.75rem);
+
+  /* === LAYOUT & MOTION === */
+  --max-w: 1440px;
+  --gutter: clamp(1rem, 3.2vw, 3rem);
+  --section-py: clamp(3.75rem, 6vw, 6.25rem);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --ease-architectural: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 240ms;
+  --dur-med: 480ms;
+  --dur-slow: 760ms;
+
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}

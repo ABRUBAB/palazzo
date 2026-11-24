@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Palazzo Verena Firenze — Boutique City Palazzo &amp; Suites in Florence</title>
+    <meta
+      name="description"
+      content="Palazzo Verena is an intimate 14-suite 16th-century boutique palazzo at Via della Spada 14, Florence. Explore every historic floor interactively and book directly in EUR."
+    />
+    <meta name="theme-color" content="#1F3028" />
+    <meta property="og:title" content="Palazzo Verena Firenze — 16th-Century Boutique Palazzo" />
+    <meta
+      property="og:description"
+      content="Explore four historic stories on our interactive Florentine floorplan, compare morning &amp; twilight ambiance, and calculate your direct stay in EUR."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      imagesrcset="/images/hero-palazzo-480.webp 480w, /images/hero-palazzo-960.webp 960w, /images/hero-palazzo-1440.webp 1440w"
+      imagesizes="100vw"
+    />
+    <style>
+      @media print {
+        .site-header,
+        .quick-actions,
+        .gdpr-banner,
+        #date-popover,
+        .drawer-backdrop,
+        .scroll-progress-bar {
+          display: none !important;
+        }
+        .reservation-drawer.is-open {
+          position: static;
+          width: 100%;
+          box-shadow: none;
+          border: none;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scroll-progress-bar" class="scroll-progress-bar" aria-hidden="true"></div>
+
+    <!-- === ADAPTIVE FLOATING GLASSMORPHIC HEADER === -->
+    <header id="site-header" class="site-header">
+      <div class="header-bar">
+        <a href="#palazzo" class="brand-mark">
+          <svg class="brand-crest" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1F3028" />
+            <rect x="5" y="5" width="54" height="54" rx="10" stroke="#D9B87E" stroke-width="1.5" stroke-opacity="0.75" />
+            <path d="M20 46V27C20 20.37 25.37 15 32 15C38.63 15 44 20.37 44 27V46" stroke="#D9B87E" stroke-width="2" />
+            <path d="M26 46V28C26 24.69 28.69 22 32 22C35.31 22 38 24.69 38 28V46" stroke="#F7F3EC" stroke-width="1.5" />
+            <line x1="16" y1="46" x2="48" y2="46" stroke="#D9B87E" stroke-width="2" />
+          </svg>
+          <span class="brand-wordmark">
+            <span class="brand-name">Palazzo Verena</span>
+            <span class="brand-city">Firenze · 1548</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#palazzo" data-i18n="nav.palazzo">The Palazzo</a>
+          <a href="#explorer" data-i18n="nav.explorer">Floors &amp; Suites</a>
+          <a href="#experiences" data-i18n="nav.experiences">Experiences</a>
+          <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+          <a href="#location" data-i18n="nav.location">Location</a>
+        </nav>
+
+        <div class="header-actions">
+          <span class="currency-pill" aria-label="Currency Euro">€ EUR</span>
+          <div class="lang-switcher" role="group" aria-label="Language switcher">
+            <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="true">EN</button>
+            <button type="button" class="lang-btn" data-lang-btn="it" aria-pressed="false">IT</button>
+            <button type="button" class="lang-btn" data-lang-btn="fr" aria-pressed="false">FR</button>
+            <button type="button" class="lang-btn" data-lang-btn="de" aria-pressed="false">DE</button>
+          </div>
+          <button type="button" id="mobile-compact-lang" class="mobile-compact-lang" aria-label="Cycle language">EN</button>
+          <button type="button" id="header-book-btn" class="btn-liquid btn-liquid--brass header-cta" data-magnetic>
+            <span data-i18n="nav.bookCta">Book a Stay</span>
+          </button>
+          <button
+            type="button"
+            id="mobile-menu-btn"
+            class="mobile-menu-btn"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="16" y2="17" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Slide Drawer -->
+    <div id="mobile-nav-backdrop" class="mobile-nav-backdrop"></div>
+    <aside id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true" aria-label="Mobile menu">
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span class="brand-name" style="font-size:1.3rem">Palazzo Verena</span>
+          <button type="button" id="mobile-nav-close" class="neu-control" style="width:40px;height:40px;border-radius:50%" aria-label="Close menu">✕</button>
+        </div>
+        <div class="lang-switcher" role="group" aria-label="Mobile language switcher">
+          <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang-btn="it" aria-pressed="false">IT</button>
+          <button type="button" class="lang-btn" data-lang-btn="fr" aria-pressed="false">FR</button>
+          <button type="button" class="lang-btn" data-lang-btn="de" aria-pressed="false">DE</button>
+        </div>
+        <nav class="mobile-nav-list">
+          <a href="#palazzo" data-i18n="nav.palazzo">The Palazzo</a>
+          <a href="#explorer" data-i18n="nav.explorer">Floors &amp; Suites</a>
+          <a href="#experiences" data-i18n="nav.experiences">Experiences</a>
+          <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+          <a href="#location" data-i18n="nav.location">Location</a>
+        </nav>
+      </div>
+      <button type="button" id="mobile-book-btn" class="btn-liquid" style="width:100%">
+        <span data-i18n="nav.bookCta">Book a Stay</span>
+      </button>
+    </aside>
+
+    <main>
+      <!-- === FULL-BLEED CINEMATIC LUXURY HERO === -->
+      <section id="palazzo" class="hero">
+        <div class="hero-backdrop" aria-hidden="true">
+          <div id="hero-media-frame" class="media-frame"></div>
+          <div class="hero-scrim"></div>
+          <div class="hero-frame-lines"></div>
+        </div>
+
+        <div class="container hero-content">
+          <div class="hero-top-meta" data-reveal>
+            <span id="hero-eyebrow" class="eyebrow hero-eyebrow">Via della Spada 14 · Florence, Italy</span>
+            <span id="hero-credential-pill" class="hero-credential-pill glass-dark">★ 4.96 Direct Guests · 14 Suites · Est. 1548</span>
+          </div>
+
+          <h1 class="hero-title" data-reveal data-reveal-delay="80">
+            <span id="hero-title-1">Palazzo Verena</span>
+            <em id="hero-title-2">A Florentine Sanctuary of Stone &amp; Light.</em>
+          </h1>
+
+          <p id="hero-subtitle" class="hero-subtitle" data-reveal data-reveal-delay="140">
+            Fourteen individually vaulted suites inside a restored 1548 Medici-era palazzo, three minutes from Il Duomo.
+          </p>
+
+          <!-- Docked Hero Availability Bar -->
+          <div class="availability-bar" data-reveal data-reveal-delay="200">
+            <button
+              type="button"
+              id="hero-date-trigger"
+              class="avail-field neu-control"
+              data-date-trigger
+              aria-haspopup="dialog"
+            >
+              <span class="avail-field-meta">
+                <span id="hero-dates-label" class="avail-label">Check-In — Check-Out</span>
+                <span id="hero-dates-value" class="avail-value">Select Dates</span>
+              </span>
+              <span aria-hidden="true" style="color:var(--terracotta)">▾</span>
+            </button>
+
+            <div class="avail-field neu-control">
+              <span class="avail-field-meta">
+                <span id="hero-guests-label" class="avail-label">Guests</span>
+                <span id="hero-guests-value" class="avail-value">2 Guests</span>
+              </span>
+              <span class="guest-stepper">
+                <button type="button" id="hero-guest-minus" class="stepper-btn" aria-label="Decrease guests">−</button>
+                <button type="button" id="hero-guest-plus" class="stepper-btn" aria-label="Increase guests">+</button>
+              </span>
+            </div>
+
+            <button type="button" id="hero-explore-btn" class="btn-liquid btn-liquid--brass" data-magnetic>
+              <span id="hero-explore-label">Find Your Suite</span>
+            </button>
+          </div>
+
+          <div class="hero-bottom-cue">
+            <span class="hero-coords">43°46'19"N · 11°15'04"E · Centro Storico</span>
+            <a href="#explorer" class="hero-scroll-link">
+              <span id="hero-scroll-cue">Explore Suites</span>
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- === ARCHITECTURAL SIGNATURE HIGHLIGHTS RIBBON === -->
+      <div class="signature-strip">
+        <div class="container signature-grid">
+          <div class="signature-item">
+            <strong id="hero-stat-suites" class="signature-num">14 Suites</strong>
+            <span id="hero-stat-suites-label" class="signature-label">Across 4 Historic Palazzo Floors</span>
+          </div>
+          <div class="signature-item">
+            <strong id="hero-stat-history" class="signature-num">Est. 1548</strong>
+            <span id="hero-stat-history-label" class="signature-label">Restored Renaissance Limestone &amp; Timber</span>
+          </div>
+          <div class="signature-item">
+            <strong id="hero-stat-walk" class="signature-num">3–5 Min</strong>
+            <span id="hero-stat-walk-label" class="signature-label">On Foot to Il Duomo &amp; Ponte Vecchio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- === DEEP CYPRESS 2-STAGE BUILDING & ROOM EXPLORER === -->
+      <section id="explorer" class="section section--cypress">
+        <div class="container">
+          <div class="explorer-header">
+            <div data-reveal>
+              <span id="explorer-eyebrow" class="eyebrow">Interactive Floorplan</span>
+              <h2 id="explorer-title" class="display-title">Choose Your Floor &amp; Exact Suite</h2>
+              <p id="explorer-subtitle" class="section-lead"></p>
+            </div>
+
+            <div class="explorer-controls-row" data-reveal data-reveal-delay="80">
+              <div class="filter-pills" role="group" aria-label="Amenity filters">
+                <button type="button" class="neu-control neu-pill" data-filter-pill="all" aria-pressed="true">All Suites</button>
+                <button type="button" class="neu-control neu-pill" data-filter-pill="terrace" aria-pressed="false">Private Terrace</button>
+                <button type="button" class="neu-control neu-pill" data-filter-pill="tub" aria-pressed="false">Soaking Tub</button>
+                <button type="button" class="neu-control neu-pill" data-filter-pill="garden" aria-pressed="false">Garden View</button>
+                <button type="button" class="neu-control neu-pill" data-filter-pill="king" aria-pressed="false">King Bed</button>
+              </div>
+
+              <div class="blueprint-legend">
+                <span class="legend-item"><span class="legend-swatch"></span><span id="legend-available">Available</span></span>
+                <span class="legend-item"><span class="legend-swatch legend-swatch--selected"></span><span id="legend-selected">Selected</span></span>
+                <span class="legend-item"><span class="legend-swatch legend-swatch--last"></span><span id="legend-last">Last Suite</span></span>
+                <span class="legend-item"><span class="legend-swatch legend-swatch--reserved"></span><span id="legend-reserved">Booked</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="explorer-stage">
+            <!-- Left Stage: Building Elevation, Floor Switcher, Blueprint & Suite Strip -->
+            <div class="explorer-workbench">
+              <div class="floor-deck">
+                <div class="elevation-panel">
+                  <div style="display:flex;align-items:center;gap:0.9rem;min-width:0">
+                    <div id="elevation-svg-host"></div>
+                    <div class="elevation-meta">
+                      <span id="elev-title" class="elevation-label">Palazzo Elevation</span>
+                      <div style="font-family:var(--font-display);font-size:1.1rem;line-height:1.15">Via della Spada 14 · 4 Stories</div>
+                      <div style="font-size:0.76rem;color:var(--umber)">Est. 1548 · Private Lift &amp; Stone Staircase</div>
+                    </div>
+                  </div>
+                  <span class="amenity-badge" style="flex-shrink:0">14 Suites</span>
+                </div>
+
+                <div id="floor-list" class="floor-list"></div>
+              </div>
+
+              <div id="floor-light-banner" class="floor-light-banner"></div>
+
+              <div id="blueprint-viewport" class="blueprint-viewport">
+                <div id="blueprint-layer" class="blueprint-layer"></div>
+                <div id="bp-tooltip" class="bp-tooltip glass-surface glass-surface--strong" role="status" aria-live="polite"></div>
+              </div>
+
+              <div>
+                <div id="floor-suites-heading" class="floor-suites-heading">Suites on This Floor</div>
+                <div id="floor-suites-grid" class="floor-suites-grid" style="margin-top:0.55rem"></div>
+              </div>
+            </div>
+
+            <!-- Right Stage: Synchronized Suite Showcase Card -->
+            <article id="suite-showcase-card" class="suite-showcase card-specular" aria-live="polite">
+              <div class="suite-media-wrap">
+                <div id="suite-media-frame" class="media-frame" style="width:100%;height:100%"></div>
+                <div class="suite-floating-tags">
+                  <span id="suite-floor-chip" class="suite-floor-chip glass-surface">Floor 03 · 301</span>
+                  <span id="suite-demand-chip" class="suite-demand-chip">Last Suite Left</span>
+                </div>
+              </div>
+
+              <div class="suite-header-row">
+                <div>
+                  <div id="suite-category" class="suite-category">Signature Penthouse</div>
+                  <h3 id="suite-name" class="suite-name">Terrazza Brunelleschi</h3>
+                </div>
+                <div class="suite-price-box">
+                  <div id="suite-price-num" class="suite-price-num">€680</div>
+                  <div id="suite-price-unit" class="suite-price-unit">/ night</div>
+                </div>
+              </div>
+
+              <p id="suite-tagline" class="suite-tagline"></p>
+              <p id="suite-desc" class="suite-desc"></p>
+
+              <div class="suite-specs">
+                <div>
+                  <div id="spec-area-label" class="spec-label">Space</div>
+                  <div id="spec-area-val" class="spec-value">68 m²</div>
+                </div>
+                <div>
+                  <div id="spec-guests-label" class="spec-label">Guests</div>
+                  <div id="spec-guests-val" class="spec-value">3 Guests</div>
+                </div>
+                <div>
+                  <div id="spec-view-label" class="spec-label">Orientation</div>
+                  <div id="spec-view-val" class="spec-value">All-day sun</div>
+                </div>
+              </div>
+
+              <div id="suite-badges" class="suite-badges"></div>
+              <div id="suite-stay-preview" class="suite-stay-preview"></div>
+              <div id="suite-capacity-warning" class="suite-warning" hidden></div>
+
+              <div class="suite-actions">
+                <button type="button" id="suite-reserve-btn" class="btn-liquid" data-magnetic>
+                  Reserve This Suite →
+                </button>
+                <button type="button" id="suite-compare-btn" class="btn-outline">
+                  Compare Day &amp; Evening Light
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- === DAYLIGHT TO EVENING DRAG-TO-SLIDE COMPARER === -->
+      <section id="comparer" class="section section--dark">
+        <div class="container">
+          <div class="comparer-head" data-reveal>
+            <div>
+              <span id="comparer-eyebrow" class="eyebrow">Daylight to Evening</span>
+              <h2 id="comparer-title" class="display-title">Morning Sun to Candlelit Calm</h2>
+              <p id="comparer-subtitle" class="section-lead"></p>
+            </div>
+            <div class="comparer-presets">
+              <button type="button" id="comparer-preset-morning" class="btn-outline" style="color:var(--canvas);background:rgba(255,255,255,0.08);border-color:rgba(217,184,126,0.45)" data-comparer-preset="90">Morning 08:30</button>
+              <button type="button" id="comparer-preset-split" class="btn-outline" style="color:var(--canvas);background:rgba(255,255,255,0.08);border-color:rgba(217,184,126,0.45)" data-comparer-preset="50">Split 50 / 50</button>
+              <button type="button" id="comparer-preset-evening" class="btn-outline" style="color:var(--canvas);background:rgba(255,255,255,0.08);border-color:rgba(217,184,126,0.45)" data-comparer-preset="10">Evening 21:00</button>
+            </div>
+          </div>
+
+          <div id="comparer-stage" class="comparer-stage" data-reveal data-reveal-delay="80">
+            <div id="comparer-day-layer" class="comparer-layer"></div>
+            <div id="comparer-evening-layer" class="comparer-layer comparer-layer--evening"></div>
+
+            <div class="comparer-caption-chip comparer-caption-chip--left glass-dark">
+              <div id="comparer-day-label" class="comparer-chip-title">08:30 Morning Sun</div>
+              <div id="comparer-day-sub" class="comparer-chip-sub"></div>
+            </div>
+            <div class="comparer-caption-chip comparer-caption-chip--right glass-dark">
+              <div id="comparer-evening-label" class="comparer-chip-title">21:00 Evening Calm</div>
+              <div id="comparer-evening-sub" class="comparer-chip-sub"></div>
+            </div>
+
+            <div id="comparer-divider" class="comparer-divider">
+              <button
+                type="button"
+                id="comparer-handle"
+                class="comparer-handle"
+                role="slider"
+                aria-label="Compare morning daylight and evening ambiance"
+                aria-valuemin="4"
+                aria-valuemax="96"
+                aria-valuenow="52"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="8 7 3 12 8 17" />
+                  <polyline points="16 7 21 12 16 17" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div id="comparer-hint" class="comparer-hint">Drag brass handle or press arrow keys</div>
+        </div>
+      </section>
+
+      <!-- === DIRECT STAY & RATE CALCULATOR === -->
+      <section id="calculator" class="section section--alt">
+        <div class="container">
+          <div data-reveal>
+            <span id="calc-eyebrow" class="eyebrow">Direct Stay Estimator</span>
+            <h2 id="calc-title" class="display-title">Plan Your Stay &amp; Rate</h2>
+            <p id="calc-subtitle" class="section-lead"></p>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-card" data-reveal>
+              <div class="calc-suite-strip">
+                <div style="width:100%">
+                  <label id="calc-suite-label" for="calc-suite-select" class="avail-label">Selected Suite</label>
+                  <select id="calc-suite-select" class="calc-suite-select"></select>
+                </div>
+              </div>
+
+              <div class="calc-controls-bar">
+                <button type="button" id="calc-date-trigger" class="avail-field neu-control" data-date-trigger>
+                  <span class="avail-field-meta">
+                    <span id="calc-dates-label" class="avail-label">Stay Dates</span>
+                    <span id="calc-dates-value" class="avail-value"></span>
+                  </span>
+                  <span aria-hidden="true" style="color:var(--terracotta)">▾</span>
+                </button>
+
+                <div class="avail-field neu-control">
+                  <span class="avail-field-meta">
+                    <span id="calc-guests-label" class="avail-label">Guests</span>
+                    <span id="calc-guests-value" class="avail-value">2 Guests</span>
+                  </span>
+                  <span class="guest-stepper">
+                    <button type="button" id="calc-guest-minus" class="stepper-btn" aria-label="Decrease stay guests">−</button>
+                    <button type="button" id="calc-guest-plus" class="stepper-btn" aria-label="Increase stay guests">+</button>
+                  </span>
+                </div>
+              </div>
+
+              <h3 id="calc-addons-heading" style="margin:1.35rem 0 0;font-family:var(--font-display);font-size:1.3rem;font-weight:400">
+                Optional Hotel Privileges
+              </h3>
+              <div id="calc-addons-list" class="addons-list"></div>
+            </div>
+
+            <aside class="folio-card" data-reveal data-reveal-delay="100">
+              <div style="font-size:0.74rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brass-bright);font-weight:700" id="calc-folio-heading">
+                Your Direct Stay Summary
+              </div>
+              <div id="calc-folio-lines" style="margin-top:0.85rem"></div>
+              <div id="calc-discount-nudge" class="folio-nudge" hidden></div>
+
+              <div class="folio-total-row">
+                <span id="calc-total-label" style="font-size:1rem;font-weight:600">Estimated Total</span>
+                <strong id="calc-total-num" class="folio-total-num">€0</strong>
+              </div>
+              <div id="calc-vat-note" class="folio-vat">Includes 10% Italian Hospitality VAT (IVA)</div>
+
+              <button type="button" id="calc-proceed-btn" class="btn-liquid btn-liquid--brass" style="width:100%;margin-top:1.25rem" data-magnetic>
+                Continue to Reservation
+              </button>
+              <div id="calc-best-rate" style="margin-top:0.75rem;text-align:center;font-size:0.76rem;color:rgba(247,243,236,0.74)"></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- === ASYMMETRICAL EXPERIENCES === -->
+      <section id="experiences" class="section">
+        <div class="container">
+          <div data-reveal>
+            <span id="exp-eyebrow" class="eyebrow">Palazzo Life</span>
+            <h2 id="exp-title" class="display-title">Slow Mornings &amp; Florentine Craft</h2>
+            <p id="exp-subtitle" class="section-lead"></p>
+          </div>
+          <div id="experiences-list" class="experiences-editorial"></div>
+        </div>
+      </section>
+
+      <!-- === EDITORIAL STAGGERED GALLERY === -->
+      <section id="gallery" class="section section--blush">
+        <div class="container">
+          <div data-reveal>
+            <span id="gallery-eyebrow" class="eyebrow">Editorial Gallery</span>
+            <h2 id="gallery-title" class="display-title">Travertine, Cypress &amp; Twilight</h2>
+            <p id="gallery-subtitle" class="section-lead"></p>
+          </div>
+          <div id="gallery-mosaic" class="gallery-mosaic"></div>
+        </div>
+      </section>
+
+      <!-- === FLORENCE LOCATION & WALKABILITY MAP === -->
+      <section id="location" class="section">
+        <div class="container">
+          <div data-reveal>
+            <span id="loc-eyebrow" class="eyebrow">Centro Storico · Florence</span>
+            <h2 id="loc-title" class="display-title">Minutes From Every Masterpiece</h2>
+            <p id="loc-subtitle" class="section-lead"></p>
+          </div>
+
+          <div class="location-grid">
+            <div class="map-card" data-reveal>
+              <div id="florence-map-host"></div>
+            </div>
+
+            <div data-reveal data-reveal-delay="80">
+              <div style="padding:1.15rem;border-radius:var(--radius-md);background:var(--surface-elevated);border:1px solid var(--divider)">
+                <div id="loc-address-label" class="avail-label">Address</div>
+                <div id="loc-address-val" style="font-family:var(--font-display);font-size:1.25rem;margin-top:0.2rem">
+                  Via della Spada 14, 50123 Firenze FI, Italy
+                </div>
+                <div id="loc-hours-label" class="avail-label" style="margin-top:0.9rem">Concierge &amp; Check-In</div>
+                <div id="loc-hours-val" style="font-size:0.86rem;color:var(--umber);margin-top:0.15rem"></div>
+
+                <div style="display:flex;flex-wrap:wrap;gap:0.65rem;margin-top:1.1rem">
+                  <a
+                    id="loc-maps-btn"
+                    class="btn-liquid"
+                    href="https://www.google.com/maps/search/?api=1&query=Via+della+Spada+14+50123+Firenze"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open Google Maps
+                  </a>
+                  <button type="button" id="location-concierge-btn" class="btn-outline">
+                    Message Concierge
+                  </button>
+                </div>
+              </div>
+
+              <div id="landmark-list" class="landmark-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- === EU LEGAL FOOTER === -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand-name">Palazzo Verena — Firenze</div>
+            <p id="footer-tagline" class="footer-tagline"></p>
+          </div>
+          <div>
+            <h3 id="footer-col-explore" class="footer-col-title">Explore</h3>
+            <ul class="footer-list">
+              <li><a href="#palazzo" data-i18n="nav.palazzo">The Palazzo</a></li>
+              <li><a href="#explorer" data-i18n="nav.explorer">Floors &amp; Suites</a></li>
+              <li><a href="#comparer">Daylight to Evening</a></li>
+              <li><a href="#calculator">Stay Estimator</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 id="footer-col-palazzo" class="footer-col-title">Hospitality</h3>
+            <ul class="footer-list">
+              <li><a href="tel:+390552894120">+39 055 289 4120</a></li>
+              <li><a href="mailto:concierge@palazzoverena.it">concierge@palazzoverena.it</a></li>
+              <li><button type="button" id="footer-concierge-btn">Private Concierge Desk</button></li>
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=Via+della+Spada+14+50123+Firenze" target="_blank" rel="noopener noreferrer">
+                  Via della Spada 14, Firenze
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 id="footer-col-legal" class="footer-col-title">European Legal</h3>
+            <ul class="footer-list">
+              <li><button type="button" id="footer-impressum" data-legal-open="impressum">Impressum</button></li>
+              <li><button type="button" id="footer-privacy" data-legal-open="privacy">Privacy Policy (GDPR)</button></li>
+              <li><button type="button" id="footer-terms" data-legal-open="terms">Terms of Service</button></li>
+              <li><button type="button" id="footer-cookie-btn">Cookie Settings</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span id="footer-copyright">© 2026 Palazzo Verena S.r.l.</span>
+          <span id="footer-craft-credit">Crafted by Abdulla Rubab</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- === POPOVERS, DRAWERS, MODALS & OVERLAYS === -->
+    <div id="date-popover" class="date-popover" role="dialog" aria-modal="false" aria-hidden="true" aria-label="Date range picker"></div>
+
+    <!-- Slide-Out Reservation Drawer -->
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+    <aside id="reservation-drawer" class="reservation-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="drawer-title">
+      <div class="drawer-head">
+        <h2 id="drawer-title" style="margin:0;font-family:var(--font-display);font-size:1.35rem;font-weight:400">Direct Suite Reservation</h2>
+        <button type="button" id="drawer-close-btn" class="neu-control" style="width:40px;height:40px;border-radius:50%" aria-label="Close reservation drawer">✕</button>
+      </div>
+      <div id="drawer-steps" class="drawer-steps"></div>
+      <div id="drawer-body" class="drawer-body"></div>
+    </aside>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="lightbox-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Gallery preview">
+      <div class="modal-dialog lightbox-dialog">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.65rem;padding-inline:0.35rem">
+          <span id="lightbox-counter" style="font-size:0.8rem;color:var(--brass-bright);font-weight:700">1 / 6</span>
+          <div style="display:flex;gap:0.4rem">
+            <button type="button" id="lightbox-prev" class="btn-outline" style="min-height:36px;padding:0.3rem 0.75rem;color:var(--canvas);background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)" aria-label="Previous image">←</button>
+            <button type="button" id="lightbox-next" class="btn-outline" style="min-height:36px;padding:0.3rem 0.75rem;color:var(--canvas);background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)" aria-label="Next image">→</button>
+            <button type="button" id="lightbox-close" class="btn-outline" style="min-height:36px;padding:0.3rem 0.75rem;color:var(--canvas);background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)" aria-label="Close lightbox">✕</button>
+          </div>
+        </div>
+        <div id="lightbox-img-host"></div>
+        <div style="padding:0.75rem 0.35rem 0.2rem">
+          <div id="lightbox-title" style="font-family:var(--font-display);font-size:1.25rem"></div>
+          <div id="lightbox-caption" style="font-size:0.86rem;color:rgba(247,243,236,0.75);margin-top:0.2rem"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EU Legal Modal (Impressum, Privacy, Terms) -->
+    <div id="legal-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-dialog">
+        <div style="display:flex;justify-content:flex-end">
+          <button type="button" id="legal-modal-close" class="neu-control" style="width:38px;height:38px;border-radius:50%" aria-label="Close legal dialog">✕</button>
+        </div>
+        <div id="legal-modal-content"></div>
+      </div>
+    </div>
+
+    <!-- Granular GDPR Settings Modal -->
+    <div id="gdpr-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="gdpr-modal-title">
+      <div class="modal-dialog">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+          <h3 id="gdpr-modal-title" style="margin:0;font-family:var(--font-display);font-size:1.45rem;font-weight:400">Privacy Settings</h3>
+          <button type="button" id="gdpr-modal-close" class="neu-control" style="width:38px;height:38px;border-radius:50%" aria-label="Close privacy settings">✕</button>
+        </div>
+        <div style="margin-top:1.2rem;display:flex;flex-direction:column;gap:0.85rem">
+          <div class="addon-row">
+            <div>
+              <div id="gdpr-essential-title" class="addon-title">Strictly Necessary</div>
+              <div id="gdpr-essential-desc" class="addon-desc"></div>
+            </div>
+            <button type="button" class="neu-switch" role="switch" aria-checked="true" disabled aria-label="Essential cookies always active"></button>
+          </div>
+          <div class="addon-row">
+            <div>
+              <div id="gdpr-analytics-title" class="addon-title">Anonymous Performance</div>
+              <div id="gdpr-analytics-desc" class="addon-desc"></div>
+            </div>
+            <button type="button" id="gdpr-toggle-analytics" class="neu-switch" role="switch" aria-checked="false" aria-label="Toggle performance telemetry"></button>
+          </div>
+          <div class="addon-row">
+            <div>
+              <div id="gdpr-marketing-title" class="addon-title">Seasonal Invitations</div>
+              <div id="gdpr-marketing-desc" class="addon-desc"></div>
+            </div>
+            <button type="button" id="gdpr-toggle-marketing" class="neu-switch" role="switch" aria-checked="false" aria-label="Toggle seasonal invitations"></button>
+          </div>
+        </div>
+        <button type="button" id="gdpr-save-btn" class="btn-liquid" style="width:100%;margin-top:1.3rem">Save Preferences</button>
+      </div>
+    </div>
+
+    <!-- Private Concierge Contact Modal -->
+    <div id="contact-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="contact-title">
+      <div class="modal-dialog">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem">
+          <div>
+            <h3 id="contact-title" style="margin:0;font-family:var(--font-display);font-size:1.5rem;font-weight:400">Palazzo Concierge</h3>
+            <p id="contact-subtitle" style="margin:0.3rem 0 0;font-size:0.86rem;color:var(--umber)"></p>
+          </div>
+          <button type="button" id="contact-modal-close" class="neu-control" style="width:38px;height:38px;border-radius:50%" aria-label="Close concierge dialog">✕</button>
+        </div>
+
+        <form id="contact-form" class="form-grid" style="margin-top:1.25rem" novalidate>
+          <div>
+            <label class="field-label" for="contact-name">Name *</label>
+            <input class="field-input" id="contact-name" type="text" required placeholder="Marco Visconti" />
+          </div>
+          <div>
+            <label class="field-label" for="contact-email">Email *</label>
+            <input class="field-input" id="contact-email" type="email" required placeholder="marco@atelier.it" />
+          </div>
+          <div>
+            <label class="field-label" for="contact-message">Message *</label>
+            <textarea class="field-textarea" id="contact-message" rows="3" required placeholder="Private museum access, airport transfer, or bespoke suite request..."></textarea>
+          </div>
+          <div id="contact-error" class="field-error" hidden></div>
+          <button type="submit" id="contact-send-btn" class="btn-liquid">Send Message</button>
+        </form>
+
+        <div id="contact-sent-state" hidden style="margin-top:1.25rem;text-align:center;padding:1.5rem;border-radius:var(--radius-md);background:var(--cypress);color:var(--canvas)">
+          <h4 id="contact-sent-title" style="margin:0;font-family:var(--font-display);font-size:1.4rem;font-weight:400">Message Received</h4>
+          <p id="contact-sent-body" style="margin:0.5rem 0 1.15rem;font-size:0.88rem;opacity:0.88"></p>
+          <button type="button" id="contact-reset-btn" class="btn-liquid btn-liquid--brass">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Quick-Action Bar (Direct Call, WhatsApp, Google Maps) -->
+    <div class="quick-actions glass-surface glass-surface--strong" aria-label="Instant concierge actions">
+      <a class="qa-pill" href="tel:+390552894120" aria-label="Call Palazzo Verena Concierge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        <span id="qa-call-label">Call Hotel</span>
+      </a>
+      <a
+        class="qa-pill qa-pill--whatsapp"
+        href="https://wa.me/390552894120?text=Buongiorno%20Palazzo%20Verena%2C%20I%20would%20like%20assistance%20with%20a%20suite%20stay%20in%20Florence."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp Concierge"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        </svg>
+        <span id="qa-whatsapp-label">WhatsApp</span>
+      </a>
+      <a
+        class="qa-pill"
+        href="https://www.google.com/maps/search/?api=1&query=Via+della+Spada+14+50123+Firenze"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Palazzo Verena in Google Maps"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <span id="qa-maps-label">Maps</span>
+      </a>
+    </div>
+
+    <!-- Realistic GDPR Cookie Consent Banner (Bottom-Left on Desktop) -->
+    <aside id="gdpr-banner" class="gdpr-banner glass-surface glass-surface--strong" role="region" aria-label="Privacy and cookie notice" aria-hidden="true">
+      <div>
+        <div id="gdpr-title" style="font-family:var(--font-display);font-size:1rem;font-weight:500">Cookie &amp; Privacy Preferences</div>
+        <p id="gdpr-body" style="margin:0.2rem 0 0;font-size:0.78rem;color:var(--umber)"></p>
+      </div>
+      <div class="gdpr-actions">
+        <button type="button" id="gdpr-necessary-btn" class="btn-outline" style="min-height:36px;padding:0.35rem 0.85rem;font-size:0.76rem">Necessary Only</button>
+        <button type="button" id="gdpr-settings-btn" class="btn-outline" style="min-height:36px;padding:0.35rem 0.85rem;font-size:0.76rem">Settings</button>
+        <button type="button" id="gdpr-accept-btn" class="btn-liquid" style="min-height:36px;padding:0.4rem 1rem;font-size:0.76rem">Accept All</button>
+      </div>
+    </aside>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

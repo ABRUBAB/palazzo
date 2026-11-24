@@ -1,0 +1,274 @@
+/* === FROSTED GLASSMORPHISM (with graceful Gecko fallback) === */
+.glass-surface {
+  background-color: rgba(250, 247, 242, 0.95);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-dark {
+  background-color: rgba(20, 22, 19, 0.88);
+  color: var(--canvas);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+
+@supports (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px)) {
+  .glass-surface {
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  .glass-surface--strong {
+    background-color: var(--glass-bg-strong);
+  }
+
+  .glass-dark {
+    background-color: var(--glass-dark-bg);
+    -webkit-backdrop-filter: blur(16px) saturate(135%);
+    backdrop-filter: blur(16px) saturate(135%);
+  }
+}
+
+/* Specular light sheen on 3D perspective tilted cards */
+.card-specular {
+  position: relative;
+}
+
+.card-specular::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.22),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms var(--ease-architectural);
+  z-index: 3;
+}
+
+.card-specular:hover::after {
+  opacity: 1;
+}
+
+/* === LIQUID & WATER MORPHISM (Action Buttons & Floating Badges) === */
+.btn-liquid {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 46px;
+  padding: 0.78rem 1.55rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--cypress) 0%, var(--cypress-light) 100%);
+  color: var(--canvas);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  border: 1px solid rgba(217, 184, 126, 0.45);
+  box-shadow:
+    0 12px 28px -10px rgba(20, 33, 27, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  transition:
+    transform var(--dur-fast) var(--ease-architectural),
+    box-shadow var(--dur-med) var(--ease-architectural),
+    border-color var(--dur-fast) var(--ease-architectural);
+  isolation: isolate;
+}
+
+.btn-liquid::before {
+  content: '';
+  position: absolute;
+  left: -15%;
+  bottom: -145%;
+  width: 130%;
+  height: 155%;
+  border-radius: 44%;
+  background: linear-gradient(135deg, var(--terracotta) 0%, var(--brass-hover) 100%);
+  transform: translateY(10%) scale(0.95);
+  transition: transform 620ms var(--ease-architectural);
+  z-index: -1;
+}
+
+.btn-liquid:hover {
+  border-color: var(--brass-bright);
+  box-shadow:
+    0 16px 36px -8px rgba(184, 147, 90, 0.48),
+    0 0 24px rgba(184, 147, 90, 0.24);
+}
+
+.btn-liquid:hover::before {
+  transform: translateY(-64%) scale(1.12);
+}
+
+.btn-liquid:active {
+  transform: scale(0.98);
+}
+
+.btn-liquid--brass {
+  background: linear-gradient(135deg, var(--brass-hover) 0%, var(--terracotta) 100%);
+  color: #FAF7F2;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-liquid--brass::before {
+  background: var(--cypress-deep);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.68rem 1.35rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--divider-strong);
+  background: rgba(250, 247, 242, 0.72);
+  color: var(--ink);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition:
+    background-color var(--dur-fast) var(--ease-architectural),
+    border-color var(--dur-fast) var(--ease-architectural),
+    transform var(--dur-fast) var(--ease-architectural);
+}
+
+.btn-outline:hover {
+  background-color: var(--surface-elevated);
+  border-color: var(--brass-hover);
+  transform: translateY(-1px);
+}
+
+/* Liquid Translucent Amenity Pill */
+.amenity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.36rem 0.76rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.77rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(239, 231, 220, 0.7) 100%
+  );
+  border: 1px solid rgba(184, 147, 90, 0.24);
+  box-shadow:
+    0 4px 12px rgba(26, 23, 21, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+@supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
+  .amenity-badge {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* === TACTILE NEOMORPHISM (Controls Only) === */
+.neu-control {
+  background: var(--neu-bg);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: var(--neu-shadow);
+  transition:
+    box-shadow var(--dur-fast) var(--ease-architectural),
+    background-color var(--dur-fast) var(--ease-architectural),
+    color var(--dur-fast) var(--ease-architectural),
+    border-color var(--dur-fast) var(--ease-architectural),
+    transform var(--dur-fast) var(--ease-architectural);
+}
+
+.neu-control:hover {
+  border-color: rgba(184, 147, 90, 0.55);
+}
+
+.neu-control[aria-pressed='true'],
+.neu-control.is-active {
+  background: var(--cypress);
+  color: var(--canvas);
+  border-color: var(--brass-bright);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 10px 24px -10px rgba(20, 33, 27, 0.55);
+}
+
+/* Dark-surface tactile filter pills inside Cypress section */
+.section--cypress .neu-pill {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--canvas);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 8px 18px -8px rgba(0, 0, 0, 0.45);
+}
+
+.section--cypress .neu-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--brass-bright);
+}
+
+.section--cypress .neu-pill[aria-pressed='true'] {
+  background: linear-gradient(135deg, var(--brass) 0%, var(--brass-hover) 100%);
+  color: #1A1715;
+  border-color: #FAF7F2;
+  font-weight: 700;
+}
+
+.neu-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 40px;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* Tactile Toggle Switch */
+.neu-switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 30px;
+  border-radius: var(--radius-pill);
+  background: #E2DACB;
+  box-shadow: var(--neu-shadow-inset);
+  border: 1px solid rgba(26, 23, 21, 0.12);
+  transition: background-color var(--dur-fast) var(--ease-architectural);
+}
+
+.neu-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--surface-elevated);
+  box-shadow: 0 2px 6px rgba(26, 23, 21, 0.25);
+  transition: transform var(--dur-fast) var(--ease-architectural), background-color var(--dur-fast);
+}
+
+.neu-switch[aria-checked='true'] {
+  background: var(--cypress);
+  border-color: var(--brass);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+.neu-switch[aria-checked='true']::after {
+  transform: translateX(22px);
+  background: var(--brass-bright);
+}
