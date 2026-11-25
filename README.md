@@ -4,6 +4,7 @@
 
 <br/>
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-palazzo--verena.vercel.app-9E543D?style=for-the-badge&logo=vercel&logoColor=FAF7F2)](https://palazzo-verena.vercel.app)
 [![Deploy with Vercel](https://img.shields.io/badge/Deploy%20Live-Vercel-1F3028?style=for-the-badge&logo=vercel&logoColor=D9B87E)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FABRUBAB%2Fpalazzo)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-B8935A?style=for-the-badge&logo=typescript&logoColor=1A1715)](#performance--engineering)
 [![Vite](https://img.shields.io/badge/Vite-6.4-9E543D?style=for-the-badge&logo=vite&logoColor=FAF7F2)](#quick-start)
@@ -11,7 +12,8 @@
 [![GDPR Compliant](https://img.shields.io/badge/EU%20GDPR-Impressum%20%2B%20Privacy-1A1715?style=for-the-badge)](#european-localization--compliance)
 
 <p align="center">
-  <em>14 vaulted suites inside a restored 1548 Medici-era palazzo · Via della Spada 14, 50123 Firenze, Italy</em>
+  <em>14 vaulted suites inside a restored 1548 Medici-era palazzo · Via della Spada 14, 50123 Firenze, Italy</em><br/>
+  <strong>Live Demo:</strong> <a href="https://palazzo-verena.vercel.app">palazzo-verena.vercel.app</a>
 </p>
 
 </div>
